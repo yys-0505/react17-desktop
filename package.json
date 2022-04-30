@@ -1,0 +1,26 @@
+{
+  "name": "react17-desktop",
+  "private": true,
+  "version": "0.0.0",
+  "scripts": {
+    "local": "vite --mode devlocal",
+    "dev": "vite build --mode dev --base=/dev/",
+    "uat": "vite build --mode uat --base=/uat/",
+    "prod": "vite build --mode prod --base=/prod/",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "@reduxjs/toolkit": "^1.8.1",
+    "antd": "^4.19.5",
+    "axios": "^0.26.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-redux": "^7.2.8",
+    "react-router-dom": "6"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^1.0.7",
+    "less": "^4.1.2",
+    "vite": "^2.9.0"
+  }
+}
