@@ -1,0 +1,1 @@
+import{O as e}from"./index.7a7bb1c7.js";var s="C:\\Users\\yishuai.yin\\Desktop\\exercise\\react\\react17-desktop\\src\\pages\\menu3\\menu31\\menu31.jsx";const i=()=>e.exports.jsxDEV("div",{children:"menu31"},void 0,!1,{fileName:s,lineNumber:4,columnNumber:10},globalThis);export{i as default};
