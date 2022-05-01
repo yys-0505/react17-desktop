@@ -36,3 +36,8 @@ It correctly bundles React in production mode and optimizes the build for the be
 
 The build is minified and the filenames include the hashes.<br>
 Your app is ready to be deployed!
+
+### `yarn preview`
+Preview production page run by `yarn prod`.<br>
+Open [http://localhost:4173/[baseUrl]/index.html](http://localhost:4173/[baseUrl]/index.html) to view it in the browser.<br>
+Note that --base config should be the same with production's

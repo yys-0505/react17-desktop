@@ -6,8 +6,8 @@
     "local": "vite --mode devlocal",
     "dev": "vite build --mode dev --base=/dev/",
     "uat": "vite build --mode uat --base=/uat/",
-    "prod": "vite build --mode prod --base=/react17-desktop/dist/",
-    "preview": "vite preview"
+    "prod": "vite build --mode production --base=/react17-desktop/dist/",
+    "preview": "vite preview --base=/react17-desktop/dist/"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.1",
