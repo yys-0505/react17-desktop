@@ -5,7 +5,7 @@ import { homeRoutes, findOpenKeys } from 'router';
 import './menu.less'
 
 const genMenus = (menuConfig) => {
-  return menuConfig.map(menu => {
+  return menuConfig.filter(({ isMenu }) => (isMenu === undefined || isMenu)).map(menu => {
     const { name, path, Icon, children, key } = menu
     if (children?.length) {
       return <Menu.SubMenu key={key} {...(Icon && { icon: <Icon />})} title={name}>
@@ -23,11 +23,13 @@ export const PageMenu = () => {
   const { pathname } = useLocation()
   const currPath = pathname.split('/')[2]
   const selectKeys = Array.of(currPath)
-  const defaultOpenKeys = useMemo(() => findOpenKeys(homeRoutes, currPath).split('-'), [currPath])
   const [openKeys, setOpenKeys] = useState([])
   useEffect(() => {
-    defaultOpenKeys[0] && setOpenKeys(defaultOpenKeys) // handle default open when home->home/menu1
-  }, [defaultOpenKeys])
+    if (currPath && !openKeys.length) {
+      const defaultOpenKeys = findOpenKeys(homeRoutes, currPath).split('-')
+      setOpenKeys(defaultOpenKeys) // handle default open when home->home/menu1
+    }
+  }, [openKeys, currPath])
   const handleOpenChange = openKeys => setOpenKeys(openKeys)
   return (
     <Menu

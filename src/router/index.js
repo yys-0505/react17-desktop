@@ -63,7 +63,7 @@ export const homeRoutes = [
         children: [
           { name: 'option3-2-1', path: 'menu321', Component: Menu321, },
           { name: 'option3-2-2', path: 'menu322', Component: Menu322, },
-          { name: 'option3-2-2', path: 'menu322/:id', Component: Menu322Dtl, },
+          { name: 'option3-2-2-dtl', path: 'menu322/:id', Component: Menu322Dtl, isMenu: false, },
           { name: 'option3-2-3', path: 'menu323', Component: NotFound, },
           { name: 'option3-2-4', path: 'menu324', Component: NotFound, },
         ]
