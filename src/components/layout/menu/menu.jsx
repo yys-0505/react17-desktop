@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState, useMemo } from 'react';
 import { Menu } from 'antd';
 import { Link, useLocation } from 'react-router-dom';
 import { homeRoutes, findOpenKeys } from 'router';
@@ -23,10 +23,11 @@ export const PageMenu = () => {
   const { pathname } = useLocation()
   const currPath = pathname.split('/')[2]
   const selectKeys = Array.of(currPath)
-  const defaultOpenKeys = findOpenKeys(homeRoutes, currPath).split('-')
-  const [openKeys, setOpenKeys] = useState(defaultOpenKeys)
-  (!openKeys[0] && defaultOpenKeys[0]) && setOpenKeys(defaultOpenKeys) // handle default open when home->home/menu1
-
+  const defaultOpenKeys = useMemo(() => findOpenKeys(homeRoutes, currPath).split('-'), [currPath])
+  const [openKeys, setOpenKeys] = useState([])
+  useEffect(() => {
+    defaultOpenKeys[0] && setOpenKeys(defaultOpenKeys) // handle default open when home->home/menu1
+  }, [defaultOpenKeys])
   const handleOpenChange = openKeys => setOpenKeys(openKeys)
   return (
     <Menu
