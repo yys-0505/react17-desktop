@@ -24,11 +24,16 @@ export const PageMenu = () => {
   const currPath = pathname.split('/')[2]
   const selectKeys = Array.of(currPath)
   const defaultOpenKeys = findOpenKeys(homeRoutes, currPath).split('-')
+  const [openKeys, setOpenKeys] = useState(defaultOpenKeys)
+  (!openKeys[0] && defaultOpenKeys[0]) && setOpenKeys(defaultOpenKeys) // handle default open when home->home/menu1
+
+  const handleOpenChange = openKeys => setOpenKeys(openKeys)
   return (
     <Menu
       mode="inline"
       selectedKeys={selectKeys}
-      defaultOpenKeys={defaultOpenKeys} // 如设置openKeys，defaultOpenKeys失效
+      openKeys={openKeys} // 如设置openKeys，defaultOpenKeys失效; defaultOpenKeys只一次有效
+      onOpenChange={handleOpenChange}
       style={{ borderRight: 0 }}
     >
       { genMenus(homeRoutes) }

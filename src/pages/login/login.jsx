@@ -1,6 +1,6 @@
 import React, { useEffect, useReducer } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
-import { useNavigate } from 'react-router-dom'
+import { Navigate, useNavigate } from 'react-router-dom'
 import { compHOC } from 'components/hoc'
 import nameImg from 'common/images/login/name.png'
 import pswImg from 'common/images/login/password.png'
@@ -61,43 +61,45 @@ const Login = (props) => {
 
   const { name, password, namePlaceholder, passwordPlaceholder } = state;
   return (
-    <div id='particles-js'>
-      <form className='login'>
-        <div className='login-top'>登录</div>
-        <div className='login-center clearfix'>
-          <div className='login-center-img'><img src={nameImg}/></div>
-          <div className='login-center-input'>
-            <input
-              type='text'
-              value={name}
-              placeholder={namePlaceholder}
-              onFocus={() => dispatch({ type: 'changeNamePlaceholder', payload: '' })}
-              onBlur={() => dispatch({ type: 'changeNamePlaceholder', payload: '请输入您的用户名 [admin]' })}
-              onChange={(e) => dispatch({ type: 'changeName', payload: e.target.value })}
-            />
-            <div className='login-center-input-text'>用户名</div>
+    <>
+      { user && <Navigate to="/home" replace /> }
+      <div id='particles-js'>
+        <form className='login'>
+          <div className='login-top'>登录</div>
+          <div className='login-center clearfix'>
+            <div className='login-center-img'><img src={nameImg}/></div>
+            <div className='login-center-input'>
+              <input
+                type='text'
+                value={name}
+                placeholder={namePlaceholder}
+                onFocus={() => dispatch({ type: 'changeNamePlaceholder', payload: '' })}
+                onBlur={() => dispatch({ type: 'changeNamePlaceholder', payload: '请输入您的用户名 [admin]' })}
+                onChange={(e) => dispatch({ type: 'changeName', payload: e.target.value })}
+              />
+              <div className='login-center-input-text'>用户名</div>
+            </div>
           </div>
-        </div>
-        <div className='login-center clearfix'>
-          <div className='login-center-img'><img src={pswImg}/></div>
-          <div className='login-center-input'>
-            <input
-              type='password'
-              autoComplete='off'
-              value={password}
-              placeholder={passwordPlaceholder}
-              onFocus={() => dispatch({ type: 'changePasswordPlaceholder', payload: '' })}
-              onBlur={() => dispatch({ type: 'changePasswordPlaceholder', payload: '请输入您的密码 [admin]' })}
-              onChange={(e) => dispatch({ type: 'changePassword', payload: e.target.value })}
-              onKeyDown={handleKeyDown}
-            />
-            <div className='login-center-input-text'>密码</div>
+          <div className='login-center clearfix'>
+            <div className='login-center-img'><img src={pswImg}/></div>
+            <div className='login-center-input'>
+              <input
+                type='password'
+                autoComplete='off'
+                value={password}
+                placeholder={passwordPlaceholder}
+                onFocus={() => dispatch({ type: 'changePasswordPlaceholder', payload: '' })}
+                onBlur={() => dispatch({ type: 'changePasswordPlaceholder', payload: '请输入您的密码 [admin]' })}
+                onChange={(e) => dispatch({ type: 'changePassword', payload: e.target.value })}
+                onKeyDown={handleKeyDown}
+              />
+              <div className='login-center-input-text'>密码</div>
+            </div>
           </div>
-        </div>
-        <div className='login-button' onClick={handleLogin}>登 陆</div>
-      </form>
-      <div className='sk-rotating-plane'></div>
-    </div>
+          <div className='login-button' onClick={handleLogin}>登 陆</div>
+        </form>
+      </div>
+    </>
   )
 }
 

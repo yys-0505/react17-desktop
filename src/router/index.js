@@ -90,7 +90,7 @@ export const findOpenKeys = (routeConfig, currPathName) => {
       }
     })
   }
-  deepFind(routeConfig, currPathName)
+  currPathName && deepFind(routeConfig, currPathName)
   return openKeysStr
 }
 
